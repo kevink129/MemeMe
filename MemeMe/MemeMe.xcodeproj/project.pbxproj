@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C2A2F551CD69A6A002EFE88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A2F541CD69A6A002EFE88 /* AppDelegate.swift */; };
-		4C2A2F571CD69A6A002EFE88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A2F561CD69A6A002EFE88 /* ViewController.swift */; };
+		4C2A2F571CD69A6A002EFE88 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A2F561CD69A6A002EFE88 /* MainViewController.swift */; };
 		4C2A2F5A1CD69A6A002EFE88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A2F581CD69A6A002EFE88 /* Main.storyboard */; };
 		4C2A2F5C1CD69A6A002EFE88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A2F5B1CD69A6A002EFE88 /* Assets.xcassets */; };
 		4C2A2F5F1CD69A6A002EFE88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C2A2F5D1CD69A6A002EFE88 /* LaunchScreen.storyboard */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		4C2A2F511CD69A6A002EFE88 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2A2F541CD69A6A002EFE88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C2A2F561CD69A6A002EFE88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4C2A2F561CD69A6A002EFE88 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4C2A2F591CD69A6A002EFE88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C2A2F5B1CD69A6A002EFE88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C2A2F5E1CD69A6A002EFE88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				4C2A2F541CD69A6A002EFE88 /* AppDelegate.swift */,
-				4C2A2F561CD69A6A002EFE88 /* ViewController.swift */,
+				4C2A2F561CD69A6A002EFE88 /* MainViewController.swift */,
 				4C2A2F581CD69A6A002EFE88 /* Main.storyboard */,
 				4C2A2F5B1CD69A6A002EFE88 /* Assets.xcassets */,
 				4C2A2F5D1CD69A6A002EFE88 /* LaunchScreen.storyboard */,
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C2A2F571CD69A6A002EFE88 /* ViewController.swift in Sources */,
+				4C2A2F571CD69A6A002EFE88 /* MainViewController.swift in Sources */,
 				4C2A2F551CD69A6A002EFE88 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +404,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinkell.MemeMe;
@@ -415,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinkell.MemeMe;
