@@ -96,6 +96,10 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func enableShareButton(enable: Bool){
         shareButton.enabled = enable
     }
+    func hideMemeTextFields(hide: Bool){
+        topTextField.hidden = hide
+        bottomTextField.hidden = hide
+    }
     
     //-------------------------------------------------------------------------------------------------------
     func initializeTextFields(){
@@ -103,11 +107,13 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         topTextField.text = "TOP"
         topTextField.textAlignment = NSTextAlignment.Center
         topTextField.delegate = memeTextFieldDelegate
+        //topTextField.hidden = true
         
         bottomTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.text = "BOTTOM"
         bottomTextField.textAlignment = NSTextAlignment.Center
         bottomTextField.delegate = memeTextFieldDelegate
+        //bottomTextField.hidden = true
     }
     
     //-------------------------------------------------------------------------------------------------------
@@ -146,10 +152,12 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             imagePicker.image = image
             enableShareButton(true)
+            //hideMemeTextFields(false)
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)

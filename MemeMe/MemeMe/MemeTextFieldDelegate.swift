@@ -11,6 +11,9 @@ import UIKit
 
 class MemeTextFieldDelegate : NSObject, UITextFieldDelegate {
 
+    func hideTextField(textField: UITextField, hide: Bool){
+        textField.hidden = hide
+    }
     func textFieldDidBeginEditing(textField: UITextField) {
         
         //clear placeholder text
