@@ -43,7 +43,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         initializeTextFields()
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         subscribeToKeyboardNotifications()
-        enableShareButton(false)
+        enableShareButton(true)
     }
     
     override func viewWillDisappear(animated: Bool) {
