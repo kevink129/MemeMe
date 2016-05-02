@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TQu-fR-zJd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TQu-fR-zJd">
                                 <rect key="frame" x="140" y="140" width="320" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="iJd-xN-ewT"/>
@@ -30,7 +30,7 @@
                                 </variation>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ntd-Y2-UmF">
-                                <rect key="frame" x="0.0" y="557" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="557" width="600" height="64"/>
                                 <items>
                                     <barButtonItem systemItem="camera" id="mRq-OC-NHw">
                                         <connections>
@@ -72,6 +72,8 @@
                             <constraint firstItem="yx6-3P-IjL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="2PQ-YI-4zA"/>
                             <constraint firstItem="TQu-fR-zJd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5MY-C9-eyp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TQu-fR-zJd" secondAttribute="trailing" constant="120" id="6c9-I9-YMI"/>
+                            <constraint firstItem="ntd-Y2-UmF" firstAttribute="top" secondItem="TQu-fR-zJd" secondAttribute="bottom" id="7XR-zC-PV5"/>
+                            <constraint firstItem="TQu-fR-zJd" firstAttribute="top" secondItem="yx6-3P-IjL" secondAttribute="bottom" id="Aba-rj-vNa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TQu-fR-zJd" secondAttribute="trailing" id="D0n-K2-J5L"/>
                             <constraint firstItem="TQu-fR-zJd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LNl-AY-wXR"/>
                             <constraint firstItem="eIw-Z6-9h7" firstAttribute="top" secondItem="yx6-3P-IjL" secondAttribute="bottom" constant="108" id="RC7-RB-B98"/>
