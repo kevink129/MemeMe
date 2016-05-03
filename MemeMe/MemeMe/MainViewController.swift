@@ -30,7 +30,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
-    //@IBOutlet weak var navBar: UIToolbar!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var mainView: UIView!
     
@@ -82,7 +81,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //share
         shareMemeWithOthers(memeImg)
         //save?
-        save(memeImg)
+        //save(memeImg)
     }
     
     @IBAction func cancelMeme (sender: AnyObject) {
@@ -133,14 +132,14 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let controller = UIActivityViewController(activityItems: [memeImg], applicationActivities: nil)
         self.presentViewController(controller, animated: true, completion: nil)
     }
-    func save(memeImg: UIImage) {
+   // func save(memeImg: UIImage) {
         
         //Create the meme
-        let meme = Meme( topText: topTextField.text!, bottomText: bottomTextField.text!,
-                         originalImage: imagePicker.image, memeImage: memeImg)
+  //      let meme = Meme( topText: topTextField.text!, bottomText: bottomTextField.text!,
+    //                     originalImage: imagePicker.image, memeImage: memeImg)
         
         
-    }
+    //}
     
     func generateMemedImage() -> UIImage {
     

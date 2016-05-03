@@ -24,7 +24,7 @@ class MemeTextFieldDelegate : NSObject, UITextFieldDelegate {
     
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
+        //hides the keyboard
         textField.resignFirstResponder()
         
         return true
