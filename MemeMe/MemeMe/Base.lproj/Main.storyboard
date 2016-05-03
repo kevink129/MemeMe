@@ -128,7 +128,9 @@
                         <outlet property="cancelButton" destination="LBa-qt-dE4" id="wrA-qy-RKR"/>
                         <outlet property="imagePicker" destination="TQu-fR-zJd" id="jOf-ec-4hC"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="gAh-mz-dlx"/>
+                        <outlet property="navBar" destination="fmT-0u-v2p" id="hAi-Hh-Lpy"/>
                         <outlet property="shareButton" destination="hs0-br-Jd1" id="1yK-wU-eB5"/>
+                        <outlet property="toolBar" destination="ntd-Y2-UmF" id="qa5-ko-bPn"/>
                         <outlet property="topTextField" destination="Mg4-Z5-HRa" id="T7y-da-8xc"/>
                     </connections>
                 </viewController>

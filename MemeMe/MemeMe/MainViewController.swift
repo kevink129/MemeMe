@@ -30,6 +30,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
+    //@IBOutlet weak var navBar: UIToolbar!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var mainView: UIView!
     
@@ -76,7 +77,12 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func shareMeme (sender: AnyObject) {
-        save()
+        //create meme
+        let memeImg = generateMemedImage()
+        //share
+        shareMemeWithOthers(memeImg)
+        //save?
+        save(memeImg)
     }
     
     @IBAction func cancelMeme (sender: AnyObject) {
@@ -123,18 +129,21 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     //-------------------------------------------------------------------------------------------------------
-    func save() {
-        let memeImg = generateMemedImage()
+    func shareMemeWithOthers(memeImg: UIImage) {
+        let controller = UIActivityViewController(activityItems: [memeImg], applicationActivities: nil)
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    func save(memeImg: UIImage) {
+        
         //Create the meme
         let meme = Meme( topText: topTextField.text!, bottomText: bottomTextField.text!,
                          originalImage: imagePicker.image, memeImage: memeImg)
         
-        //TODO: save
+        
     }
     
     func generateMemedImage() -> UIImage {
-        
-        // TODO: Hide toolbar and navbar
+    
         toolBar.hidden = true
         navBar.hidden = true
         
@@ -146,7 +155,6 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        // TODO:  Show toolbar and navbar
         toolBar.hidden = false
         navBar.hidden = false
         return memedImage
