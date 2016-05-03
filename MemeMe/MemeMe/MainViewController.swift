@@ -81,7 +81,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //share
         shareMemeWithOthers(memeImg)
         //save?
-        //save(memeImg)
+        save(memeImg)
     }
     
     @IBAction func cancelMeme (sender: AnyObject) {
