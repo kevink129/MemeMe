@@ -45,7 +45,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         formatMemeTextField(topTextField, placeholder: "TOP")
         formatMemeTextField(bottomTextField, placeholder:  "BOTTOM")
-        
+        shareButton.enabled = false
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         subscribeToKeyboardNotifications()
     }
@@ -125,6 +125,7 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         textField.textAlignment = NSTextAlignment.Center
         textField.delegate = memeTextFieldDelegate
         textField.adjustsFontSizeToFitWidth = true
+        
     }
     
     //-------------------------------------------------------------------------------------------------------
@@ -132,14 +133,15 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let controller = UIActivityViewController(activityItems: [memeImg], applicationActivities: nil)
         self.presentViewController(controller, animated: true, completion: nil)
     }
-   // func save(memeImg: UIImage) {
+   
+    func save(memeImg: UIImage) {
         
         //Create the meme
-  //      let meme = Meme( topText: topTextField.text!, bottomText: bottomTextField.text!,
-    //                     originalImage: imagePicker.image, memeImage: memeImg)
+        let meme = Meme( topText: topTextField.text!, bottomText: bottomTextField.text!,
+                         originalImage: imagePicker.image, memeImage: memeImg)
         
         
-    //}
+    }
     
     func generateMemedImage() -> UIImage {
     
@@ -167,7 +169,9 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             imagePicker.image = image
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.shareButton.enabled = true
+        })
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
