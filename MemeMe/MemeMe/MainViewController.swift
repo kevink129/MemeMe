@@ -38,13 +38,13 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        formatMemeTextField(topTextField, placeholder: "TOP")
+        formatMemeTextField(bottomTextField, placeholder:  "BOTTOM")
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        formatMemeTextField(topTextField, placeholder: "TOP")
-        formatMemeTextField(bottomTextField, placeholder:  "BOTTOM")
         shareButton.enabled = false
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         subscribeToKeyboardNotifications()
@@ -63,16 +63,10 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //MARK: Actions
     
     @IBAction func pickAnImageFromAlbum (sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        presentViewController(imagePicker, animated: true, completion: nil)
+        getImageFromSource(UIImagePickerControllerSourceType.PhotoLibrary)
     }
     @IBAction func pickAnImageFromCamera (sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        presentViewController(imagePicker, animated: true, completion: nil)
+        getImageFromSource(UIImagePickerControllerSourceType.Camera)
     }
     
     @IBAction func shareMeme (sender: AnyObject) {
@@ -80,14 +74,13 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let memeImg = generateMemedImage()
         //share
         shareMemeWithOthers(memeImg)
-        //save?
-        save(memeImg)
     }
     
     @IBAction func cancelMeme (sender: AnyObject) {
         imagePicker.image = nil
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
+        shareButton.enabled = false
     }
 
     //-------------------------------------------------------------------------------------------------------
@@ -95,12 +88,15 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func keyboardWillShow(notification: NSNotification){
         if(bottomTextField.isFirstResponder()){
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = getKeyboardHeight(notification) * -1
+        }
+        else if(topTextField.isFirstResponder()){
+            view.frame.origin.y = 0
         }
     }
     func keyboardWillHide(notification: NSNotification){
         if(bottomTextField.isFirstResponder()){
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            self.view.frame.origin.y = 0
         }
     }
     func getKeyboardHeight(notification: NSNotification) -> CGFloat{
@@ -127,20 +123,28 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         textField.adjustsFontSizeToFitWidth = true
         
     }
-    
+    func getImageFromSource(sourceType: UIImagePickerControllerSourceType){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
     //-------------------------------------------------------------------------------------------------------
     func shareMemeWithOthers(memeImg: UIImage) {
         let controller = UIActivityViewController(activityItems: [memeImg], applicationActivities: nil)
-        self.presentViewController(controller, animated: true, completion: nil)
+        controller.completionWithItemsHandler = {
+            (activityType, completed, items, error) in
+            if completed {
+                self.save(memeImg)
+            }
+        }
+        presentViewController(controller, animated: true, completion: nil)
     }
-   
+
     func save(memeImg: UIImage) {
-        
         //Create the meme
         let meme = Meme( topText: topTextField.text!, bottomText: bottomTextField.text!,
                          originalImage: imagePicker.image, memeImage: memeImg)
-        
-        
     }
     
     func generateMemedImage() -> UIImage {
@@ -167,15 +171,14 @@ class MainViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             imagePicker.image = image
+            dismissViewControllerAnimated(true, completion: { () -> Void in
+                self.shareButton.enabled = true
+            })
         }
-        
-        dismissViewControllerAnimated(true, completion: { () -> Void in
-            self.shareButton.enabled = true
-        })
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
